@@ -19,6 +19,7 @@ outputs/
 
 # Dataset and generated indexes: exclude by default
 data/*
+!data/curated_finance_qa.jsonl
 !data/rag_index_curated/
 data/rag_index_curated/*
 !data/rag_index_curated/docs.jsonl

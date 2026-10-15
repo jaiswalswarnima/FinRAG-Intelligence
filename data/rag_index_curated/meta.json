@@ -1,6 +1,6 @@
 {
   "corpus": "data/curated_finance_qa.jsonl",
   "embed_model": "sentence-transformers/all-MiniLM-L6-v2",
-  "num_docs": 9,
+  "num_docs": 12,
   "dim": 384
 }

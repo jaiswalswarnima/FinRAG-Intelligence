@@ -1,0 +1,118 @@
+﻿
+import json
+from pathlib import Path
+
+records = [
+    {
+        "instruction": "What is EBITDA?",
+        "output": (
+            "EBITDA stands for Earnings Before Interest, Taxes, Depreciation, "
+            "and Amortization. It measures operating performance before these "
+            "expenses. EBITDA is not the same as cash flow or net income."
+        )
+    },
+    {
+        "instruction": "What is the formula for EBITDA?",
+        "output": (
+            "EBITDA = Operating Income + Depreciation + Amortization. "
+            "Alternatively, EBITDA = Net Income + Interest Expense + Taxes "
+            "+ Depreciation + Amortization, subject to accounting details."
+        )
+    },
+    {
+        "instruction": "Give a simple example of EBITDA calculation.",
+        "output": (
+            "If operating income is 500,000, depreciation is 40,000, and "
+            "amortization is 10,000, EBITDA = 500,000 + 40,000 + 10,000 "
+            "= 550,000."
+        )
+    },
+    {
+        "instruction": "What is the P/E ratio?",
+        "output": (
+            "The price-to-earnings (P/E) ratio compares a company's share "
+            "price with its earnings per share (EPS). It shows how much "
+            "investors pay per unit of earnings and should be interpreted "
+            "alongside growth, risk, and industry."
+        )
+    },
+    {
+        "instruction": "What is the formula for the P/E ratio?",
+        "output": (
+            "P/E Ratio = Market Price per Share / Earnings per Share (EPS). "
+            "If a share costs 200 and annual EPS is 10, the P/E ratio is 20."
+        )
+    },
+    {
+        "instruction": "Give a simple example of P/E ratio calculation.",
+        "output": (
+            "If a company's share price is 150 and EPS is 5, its P/E ratio "
+            "is 150 / 5 = 30. This means investors pay 30 units of share "
+            "price for each unit of annual earnings per share."
+        )
+    },
+    {
+        "instruction": "What is ROI?",
+        "output": (
+            "ROI stands for Return on Investment. It measures investment "
+            "gain or loss relative to cost, is often expressed as a "
+            "percentage, and should be considered alongside time and risk."
+        )
+    },
+    {
+        "instruction": "What is the formula for ROI?",
+        "output": (
+            "ROI = (Net Profit / Cost of Investment) * 100%. Net profit "
+            "is the investment proceeds minus its cost, using a consistent "
+            "definition of costs and proceeds."
+        )
+    },
+    {
+        "instruction": "Give a simple example of ROI calculation.",
+        "output": (
+            "If an investment costs 1,000 and generates proceeds of 1,200 "
+            "with no other costs, net profit is 200. ROI = (200 / 1,000) "
+            "* 100% = 20%."
+        )
+    },
+    {
+        "instruction": "What is compound interest?",
+        "output": (
+            "Compound interest is interest calculated on the original "
+            "principal and on interest accumulated from previous periods. "
+            "Unlike simple interest, it allows interest to earn additional "
+            "interest over time."
+        )
+    },
+    {
+        "instruction": "What is the formula for compound interest?",
+        "output": (
+            "For interest compounded once per period, the future value "
+            "formula is A = P(1 + r/n)^(nt), where P is principal, r is "
+            "annual interest rate as a decimal, n is the number of "
+            "compounding periods per year, and t is time in years. "
+            "Compound interest earned = A - P."
+        )
+    },
+    {
+        "instruction": "Explain compound interest with an example.",
+        "output": (
+            "Suppose 10,000 is invested at 10% annual interest compounded "
+            "once per year for 2 years. After year 1, the balance is "
+            "11,000. In year 2, interest is calculated on 11,000, giving "
+            "a final balance of 12,100. Total compound interest earned "
+            "is 12,100 - 10,000 = 2,100."
+        )
+    }
+]
+
+output_path = Path("data/curated_finance_qa.jsonl")
+output_path.parent.mkdir(parents=True, exist_ok=True)
+
+with output_path.open("w", encoding="utf-8") as f:
+    for record in records:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+print(f"Created: {output_path}")
+print(f"Total records: {len(records)}")
+print("Topics: EBITDA, P/E ratio, ROI, Compound Interest")
