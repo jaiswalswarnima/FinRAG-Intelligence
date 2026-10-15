@@ -124,7 +124,7 @@ def generate_answer(question, results):
 
 with st.sidebar:
     st.header("Search settings")
-    top_k = st.slider("Retrieved documents", min_value=1, max_value=5, value=3)
+    top_k = st.slider("Retrieved documents", min_value=1, max_value=5, value=5)
     st.caption("More documents may provide broader context.")
 
 try:
