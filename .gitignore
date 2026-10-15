@@ -1,0 +1,32 @@
+﻿# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# API keys and secrets
+.env
+.env.*
+
+# Allow an example environment file if added later
+!.env.example
+
+# Training artifacts
+checkpoints/
+outputs/
+
+# Dataset and generated indexes: exclude by default
+data/*
+!data/rag_index_curated/
+data/rag_index_curated/*
+!data/rag_index_curated/docs.jsonl
+!data/rag_index_curated/embeddings.npy
+!data/rag_index_curated/meta.json
+
+# Logs
+*.log
+
+# Local editor settings
+.vscode/

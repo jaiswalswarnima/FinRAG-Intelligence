@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="880" viewBox="0 0 1400 880">
+  <defs>
+    <style>
+      .t { font: 16px 'Segoe UI', Arial, sans-serif; fill: #102030; }
+      .h { font: 20px 'Segoe UI Semibold', Arial, sans-serif; fill: #102030; }
+      .box { fill: #f7fbff; stroke: #2f6fb0; stroke-width: 2; rx: 10; ry: 10; }
+      .box2 { fill: #fff8f0; stroke: #d97706; stroke-width: 2; rx: 10; ry: 10; }
+      .arrow { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#m); }
+      .sub { font: 14px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    </marker>
+  </defs>
+
+  <text x="40" y="42" class="h">Uptiq Finance QA System Architecture</text>
+
+  <!-- Training branch -->
+  <rect x="40" y="90" width="280" height="70" class="box"/>
+  <text x="60" y="120" class="t">Finance-Alpaca + FinanceBench</text>
+  <text x="60" y="143" class="sub">training/validation sources</text>
+
+  <rect x="380" y="90" width="280" height="70" class="box"/>
+  <text x="405" y="120" class="t">Preprocessing + JSONL</text>
+  <text x="405" y="143" class="sub">instruction/input/output format</text>
+
+  <rect x="720" y="90" width="280" height="70" class="box"/>
+  <text x="775" y="120" class="t">QLoRA Fine-Tuning</text>
+  <text x="760" y="143" class="sub">Qwen2.5-1.5B (4-bit)</text>
+
+  <rect x="1060" y="90" width="280" height="70" class="box"/>
+  <text x="1088" y="120" class="t">Adapter Checkpoint</text>
+  <text x="1115" y="143" class="sub">checkpoints/best_model</text>
+
+  <path d="M320 125 L380 125" class="arrow"/>
+  <path d="M660 125 L720 125" class="arrow"/>
+  <path d="M1000 125 L1060 125" class="arrow"/>
+
+  <!-- Retrieval branch -->
+  <rect x="40" y="250" width="280" height="70" class="box2"/>
+  <text x="105" y="280" class="t">RAG Corpus</text>
+  <text x="75" y="303" class="sub">data/train_v3.jsonl (indexed)</text>
+
+  <rect x="380" y="250" width="280" height="70" class="box2"/>
+  <text x="430" y="280" class="t">MiniLM Embedding</text>
+  <text x="420" y="303" class="sub">sentence-transformers</text>
+
+  <rect x="720" y="250" width="280" height="70" class="box2"/>
+  <text x="772" y="280" class="t">Dense Index</text>
+  <text x="780" y="303" class="sub">data/rag_index</text>
+
+  <path d="M320 285 L380 285" class="arrow"/>
+  <path d="M660 285 L720 285" class="arrow"/>
+
+  <!-- Inference branch -->
+  <rect x="40" y="440" width="260" height="70" class="box"/>
+  <text x="105" y="470" class="t">User Question</text>
+
+  <rect x="360" y="440" width="260" height="70" class="box"/>
+  <text x="390" y="470" class="t">Style Routing</text>
+  <text x="395" y="493" class="sub">auto/numeric/explanatory</text>
+
+  <rect x="680" y="440" width="260" height="70" class="box"/>
+  <text x="747" y="470" class="t">Retriever</text>
+  <text x="708" y="493" class="sub">top-k context from rag_index</text>
+
+  <rect x="1000" y="440" width="320" height="70" class="box"/>
+  <text x="1030" y="470" class="t">Grounded Prompt Builder</text>
+  <text x="1030" y="493" class="sub">strict numeric contract + context</text>
+
+  <path d="M300 475 L360 475" class="arrow"/>
+  <path d="M620 475 L680 475" class="arrow"/>
+  <path d="M940 475 L1000 475" class="arrow"/>
+
+  <!-- Generation/output -->
+  <rect x="470" y="620" width="300" height="80" class="box"/>
+  <text x="560" y="655" class="t">Generator</text>
+  <text x="505" y="678" class="sub">Qwen2.5-1.5B + LoRA adapter</text>
+
+  <rect x="870" y="620" width="300" height="80" class="box"/>
+  <text x="955" y="655" class="t">Final Output</text>
+  <text x="910" y="678" class="sub">Final Answer + Reason</text>
+
+  <path d="M1160 510 L620 620" class="arrow"/>
+  <path d="M1070 620 L770 660" class="arrow"/>
+  <path d="M770 660 L870 660" class="arrow"/>
+
+  <!-- Cross-links -->
+  <path d="M860 320 L860 440" class="arrow"/>
+  <path d="M1190 160 L1190 620" class="arrow"/>
+
+  <text x="40" y="835" class="sub">Final serving mode: top_k=1 (demo wrapper), strict_numeric_prompt=true, numeric_guardrail=false</text>
+</svg>
