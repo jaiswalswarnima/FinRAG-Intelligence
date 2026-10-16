@@ -6,6 +6,14 @@ FinRAG Intelligence is a financial question-answering system designed to combine
 
 The project explores parameter-efficient fine-tuning, dense vector retrieval, and evidence-based answer generation, with a focus on improving financial factuality and numerical reliability.
 
+## Live Demo
+
+**[Launch FinRAG Intelligence](https://finrag-intelligence-j7zntwukvbk9vjay7oqde9.streamlit.app/)**
+
+**GitHub Repository:** [FinRAG-Intelligence](https://github.com/jaiswalswarnima/FinRAG-Intelligence)
+
+FinRAG Intelligence is a finance-focused RAG application that answers financial concept questions using a curated knowledge base, semantic retrieval, and Groq-hosted LLM inference.
+
 ## Core Technologies
 
 - Python and PyTorch
